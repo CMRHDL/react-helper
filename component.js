@@ -2,7 +2,7 @@ const mkdirp = require('mkdirp')
 const template = require('lodash/template')
 const fs = require('fs')
 
-const index = `import <% name %>Component from './<% nameLower %>'
+const index = `import <%= name %>Component from './<%= nameLower %>'
 
 import { updateSimpleField } from '../../../actions'
 import { connect } from 'react-redux'
@@ -17,14 +17,14 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   },
 })
 
-const <% name %> = connect(mapStateToProps, mapDispatchToProps)(<% name %>Component)
+const <%= name %> = connect(mapStateToProps, mapDispatchToProps)(<%= name %>Component)
 
-export default <% name %>
+export default <%= name %>
 `
 
 const component = `import React from 'react'
 
-const <% name %> = ({
+const <%= name %> = ({
   simpleFields,
   updateSimpleField,
 }) => {
@@ -35,7 +35,7 @@ const <% name %> = ({
   )
 }
 
-export default <% name %>
+export default <%= name %>
 `
 
 const name = process.argv[2]
